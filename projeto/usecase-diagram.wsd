@@ -1,0 +1,27 @@
+@startuml
+
+:Usuario:
+:Aluno:
+:Professor:
+:Empresa: 
+
+Usuario <|-- Aluno
+Usuario <|-- Professor
+Usuario <|-- Empresa
+
+Usuario --> (realizar login)
+Usuario --> (consultar extrato)
+
+Aluno --> (realizar cadastro)
+Aluno --> (trocar moedas)
+
+Professor --> (enviar moedas)
+
+Empresa --> (cadastrar vantagem)
+
+(trocar moedas) .> (enviar email) : include
+(enviar moedas) .> (notificar aluno) : include
+(cadastrar vantagem) .> (adicionar foto e descricao) : include
+
+
+@enduml
