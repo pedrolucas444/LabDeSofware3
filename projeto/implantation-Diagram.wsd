@@ -1,0 +1,31 @@
+@startuml
+node ComputadorPessoal { 
+[Navegador]
+}
+
+node AplicacaoWeb {
+}
+
+ComputadorPessoal  -- AplicacaoWeb : HTTP
+AplicacaoWeb -- ServidorAplicacao : HTTP
+
+node ServidorAplicacao {
+[AutenticacaoUsuario]
+[GestaoSaldoMoedas]
+[GestaoNotificacoes]
+[EnviarMoedas]
+[ReceberMoedas]
+[ReceberNotificacoes]
+}
+
+[AutenticacaoUsuario] ..> [GestaoSaldoMoedas]
+[AutenticacaoUsuario] ..> [GestaoNotificacoes]
+[GestaoSaldoMoedas] ..> [EnviarMoedas]
+[GestaoSaldoMoedas] ..> [ReceberMoedas]
+[GestaoNotificacoes] ..> [ReceberNotificacoes]
+node BancoDeDados {
+[SGBD]
+}
+
+ServidorAplicacao -- BancoDeDados : HTTP
+@enduml
