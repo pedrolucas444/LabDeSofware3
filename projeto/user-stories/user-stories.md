@@ -10,7 +10,7 @@ eu quero realizar login para acessar minhas funcionalidades personalizadas.
 ## Aluno
 
 **Como um aluno**, <br>
-eu quero realizar meu cadastro para utilizar as funcionalidades como trocar moedas e consultar extrato.
+eu quero realizar meu cadastro para utilizar minhas funcionalidades.
 
 ---
 
@@ -27,7 +27,7 @@ eu quero consultar o extrato da minha conta para visualizar minhas transações 
 ## Professor
 
 **Como um professor**, <br>
-eu quero realizar meu cadastro para utilizar as funcionalidades como enviar moedas e visualizar meu extrato.
+eu quero realizar meu cadastro para utilizar minhas funcionalidades.
 
 ---
 
@@ -44,7 +44,7 @@ eu quero enviar moedas aos alunos para recompensá-los por seus méritos em aula
 ## Empresa
 
 **Como uma empresa**, <br>
-eu quero realizar meu cadastro para proporcionar vantagens aos alunos.
+eu quero realizar meu cadastro para utilizar minhas funcionalidades.
 
 ---
 
