@@ -3,65 +3,75 @@
     together {
 
         class Usuario {
-        -String nome
-        -String email
-        -String senha
+        -nome:String
+        -email:String
+        -senha:String
         +realizarLogin(): void
         +consultarExtratoConta(): void
     }
+        class Instituicao {
+       -String nome
+       -String cnpj
+       +recarregarProfessor(professor: Professor): void
+    }
 
         class Aluno {
-            -String cpf
-            -String rg
-            -String endereco
-            -String instituicao
-            -String curso
+            -cpf:String
+            -rg:String
+            -endereco:String
+            -instituicao:String
+            -curso:String
             +cadastrar(): void
             +receberMoedas(montante: int, motivo: String): void
             +trocarMoedas(vantagem: Vantagem): void
         }
 
         class Professor {
-            -String cpf
-            -String departamento
-            -int saldoMoedas = 1000
+            -cpf:String
+            -departamento:String
+            -saldoMoedas:int
             +enviarMoedas(aluno: Aluno, montante: int, motivo: String): void
-            +adicionarMoedas(saldoMoedas: int): void
+            #receberMoedas(montante: int): void
+
         }
 
         class Empresa {
-            -String cnpj
+            -cnpj:String
             +cadastrarVantagem(vantagem: Vantagem): void
         }
     }
 
     class Vantagem {
-        -String descricao
-        -String foto
-        -int valor
+        -descricao:String
+        -foto:String
+        -valor:int
         +gerarCodigoResgate(): String
     }
     
     class Transacao {
-        -String tipo
-        -int montante
-        -Date data
+        -tipo: String
+        -montante: int
+        -data: Date
+        -destinatario:String
+        -remetente:String
     }
 
     class Extrato {
+    -Usuario dono
+    -List<Transacao> transacoes
     +consultarTransacoes(): List<Transacao>
     }
 
     class Notificacao {
-        -String mensagem
+        -mensagem:String
         +enviarNotificacao(destinatario: Usuario): void
     }
 
     class Email {
-        -String remetente
-        -String destinatario
-        -String assunto
-        -String corpo
+        -remetente:String
+        -destinatario:String
+        -assunto:String
+        -corpo:String
         +enviar(): void
     }
     
@@ -71,16 +81,17 @@
 
 
     Email --> Vantagem 
-    Aluno --> Extrato 
+    Usuario --> Extrato 
     Aluno --> Vantagem 
     Aluno --> Notificacao 
     Aluno --> Email 
-    Professor --> Extrato 
     Professor --> Notificacao 
     Professor --> Aluno 
     Empresa <--> Vantagem 
     Vantagem --> Email 
     Extrato --> Transacao 
     Transacao --> Usuario 
+    Instituicao --> Professor
+
 
 @enduml
