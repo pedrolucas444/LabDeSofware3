@@ -12,7 +12,7 @@ package "System" {
         [Tela de Extrato]
     }
 
-    component "Account Service" {
+    component "Account" {
         [Validação de Usuário]
         [Cadastro de Aluno]
         [Cadastro de Professor]
@@ -20,13 +20,13 @@ package "System" {
         [Envio de Moedas]
     }
 
-    component "Vantagens Service" {
+    component "Vantagens" {
         [Cadastro de Vantagem]
         [Geração de Código de Troca]
         [Troca de Moedas]
     }
 
-    component "Emails Service" {
+    component "Emails" {
         [Envio de Notificações]
         [Envio de E-mails]
     }
@@ -34,18 +34,18 @@ package "System" {
     component "Banco de Dados" {
         [Usuários]
         [Transações]
-        [Vantagens]
+        [VantagensData]
         [Códigos de troca]
         [Notificações]
     }
 
-    [Interface] --> [Account Service] 
-    [Interface] --> [Vantagens Service] 
-    [Account Service] --> [Banco de Dados] 
-    [Account Service] --> [Emails Service] 
-    [Vantagens Service] --> [Banco de Dados] 
-    [Vantagens Service] --> [Emails Service] 
-    [Emails Service] --> [Banco de Dados] 
+    [Interface] ..> [Account] 
+    [Interface] --> [Vantagens] 
+    [Account] --> [Banco de Dados] 
+    [Account] --> [Emails] 
+    [Vantagens] --> [Banco de Dados] 
+    [Vantagens] --> [Emails] 
+    [Emails] --> [Banco de Dados] 
 }
 
 @enduml
