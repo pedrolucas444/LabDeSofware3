@@ -1,31 +1,37 @@
 @startuml
-node ComputadorPessoal { 
-[Navegador]
+left to right direction
+
+node ComputadorPessoal {
+    [Navegador Web]
 }
 
-node AplicacaoWeb {
+node ServidorWeb {
+    [Aplicação Web]
 }
-
-ComputadorPessoal  -- AplicacaoWeb : HTTP
-AplicacaoWeb -- ServidorAplicacao : HTTP
 
 node ServidorAplicacao {
-[AutenticacaoUsuario]
-[GestaoSaldoMoedas]
-[GestaoNotificacoes]
-[EnviarMoedas]
-[ReceberMoedas]
-[ReceberNotificacoes]
+    [Interface]
+    [Account]
+    [Vantagens]
+    [Emails]
 }
 
-[AutenticacaoUsuario] ..> [GestaoSaldoMoedas]
-[AutenticacaoUsuario] ..> [GestaoNotificacoes]
-[GestaoSaldoMoedas] ..> [EnviarMoedas]
-[GestaoSaldoMoedas] ..> [ReceberMoedas]
-[GestaoNotificacoes] ..> [ReceberNotificacoes]
 node BancoDeDados {
-[SGBD]
+    [MYSQL Workbench]
 }
 
-ServidorAplicacao -- BancoDeDados : HTTP
+' Conexões
+ComputadorPessoal --> ServidorWeb : HTTP/HTTPS
+ServidorWeb --> ServidorAplicacao : REST API / HTTP
+ServidorAplicacao --> BancoDeDados : JDBC / SQL
+
+' Relações internas
+[Interface] --> [Account]
+[Interface] --> [Vantagens]
+[Account] --> [Emails]
+[Account] --> [BancoDeDados]
+[Vantagens] --> [Emails]
+[Vantagens] --> [BancoDeDados]
+[Emails] --> [BancoDeDados]
+
 @enduml
